@@ -1,0 +1,28 @@
+name: Build iPad IPA
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ipad:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check shared learning and song code
+        run: node --test tests/core.test.cjs tests/content.test.cjs tests/library.test.cjs
+      - name: Build unsigned iPad app
+        run: bash build-ipa.sh
+      - name: Save IPA and installation guide
+        uses: actions/upload-artifact@v4
+        with:
+          name: Qinjie-iPad-unsigned
+          path: |
+            release/ios/*.ipa
+            release/ios/*.sha256
+            docs/iPad安装与云端打包.md
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,12 @@
+.build/
+release/*.apk
+release/previews/
+release/ios/*.ipa
+release/ios/*.sha256
+release/ios/*.zip
+**/xcuserdata/
+*.mobileprovision
+*.p12
+*.keystore
+*.jks
+.DS_Store
