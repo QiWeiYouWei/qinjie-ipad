@@ -10,11 +10,14 @@
 - XML与属性列表读取检查：Info.plist、启动页、共享scheme格式可解析；图标PNG尺寸与声明一致，图标无透明通道。
 - iPad源码包按白名单生成，不包含`.build`、安卓证书、个人备份、账号密码或IPA签名文件。
 - 安卓1.4 APK资源仍与原始`web`目录逐字节一致；新增iPad文件未修改安卓包。
+- GitHub私有仓库已建立并上传源代码，云端Mac/Xcode 16.4编译、启动页和图标编译、打包全部成功。[构建运行38277648988](https://github.com/QiWeiYouWei/qinjie-ipad/actions/runs/38277648988)，对应源码提交`6422eaa0244f81a959825a1fcb87d096bb221b44`。
+- IPA下载后再次检查通过：ZIP CRC、ARM64 Mach-O程序、包名`cn.qinjie.piano`、版本1.4.0/构建5、iPad设备目标、最低系统16.0、全部10个Web文件和原生桥接文件与本地源码一致、Assets.car与LaunchScreen.storyboardc存在、确认为未签名产物。
+- IPA大小137,224字节；SHA256：`14da779bcab2956d49860f6e37596592dbb7a4b0a7354274dfc912eeaf6a899f`，与云端生成的校验文件一致。
 
 ## 尚未验证
 
-本机只有Windows，没有Xcode，因此尚未确认Swift编译、Interface Builder编译、实际IPA产物或安装签名。浏览器测试模拟了原生消息，不能证明WKWebView和iPad系统文件选择器可正常工作。
+本机只有Windows，Swift与Interface Builder编译及IPA产物已通过云端验证。**苹果签名和设备安装仍未执行。** 浏览器测试模拟了原生消息，不能证明WKWebView和iPad系统文件选择器可正常工作。
 
 真实iPad的音频延迟、多指触控、松手尾音、后台行为、分屏、应用重启/升级后记录保留，需在云端编译成功并实际安装后检查。测试截图也来自Chrome模拟，不能当成iPad实拍。
 
-云端构建第一次成功后应追加Xcode版本、运行链接、IPA哈希与实机检查结果，不能提前改为“IPA已验证”。
+后续实机检查应追加设备型号、系统版本、签名安装方式和逐项结果；不能把编译及包内容通过写成“iPad真机通过”。首次构建时应用编译成功，后续`lipo`检查参数顺序有误；修正后第二次构建完整通过。

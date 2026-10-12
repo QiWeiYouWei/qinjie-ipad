@@ -4,9 +4,13 @@
 
 ## 当前交付状态
 
-已准备离线iPad原生外壳、Xcode工程、共享课程与曲库、文件导入/分享、云端构建脚本，以及不含安卓签名密钥和个人练习记录的源码压缩包。
+已完成离线iPad原生外壳、Xcode工程、共享课程与曲库、文件导入/分享、云端构建脚本，以及不含安卓签名密钥和个人练习记录的源码压缩包。
 
-在Windows上完成了共享逻辑、资源同步和浏览器触屏流程检查。**尚未运行Xcode编译，尚未生成可安装的IPA，尚未做iPad真机测试。** 云端构建成功后会产出文件名带`unsigned`的IPA；它还需要在安装时签名，不能直接点开安装。
+2026年10月13日已在GitHub云端Mac上使用Xcode 16.4编译成功，生成并下载`release/ios/Qinjie-1.4.0-iPad-unsigned.ipa`。本地检查通过：ARM64原生程序、iPad/系统/版本信息、全部离线资源、编译后的启动页与图标、下载哈希。**IPA尚未签名，尚未做iPad真机测试；不能直接点开安装。**
+
+私有仓库：[QiWeiYouWei/qinjie-ipad](https://github.com/QiWeiYouWei/qinjie-ipad)。成功构建：[运行38277648988](https://github.com/QiWeiYouWei/qinjie-ipad/actions/runs/38277648988)。源码提交：`6422eaa0244f81a959825a1fcb87d096bb221b44`。IPA SHA256：`14da779bcab2956d49860f6e37596592dbb7a4b0a7354274dfc912eeaf6a899f`。
+
+**现在可直接从下列流程第4步开始安装本地IPA。** 前三步用于以后更新或重新构建；现有仓库已经建立并上传源码，无需重复新建。
 
 ## Windows 用户的路线
 
