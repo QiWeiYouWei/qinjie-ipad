@@ -11,7 +11,7 @@ files = [
     'scripts/sync-ios-web.cjs', 'scripts/create-ios-icons.py',
     'scripts/validate-song-pack.cjs', 'scripts/package-ios-source.py',
     'tests/core.test.cjs', 'tests/content.test.cjs', 'tests/library.test.cjs',
-    'tests/ios-package.test.cjs', 'tests/ios-bridge-ui.cjs',
+    'tests/ios-package.test.cjs', 'tests/ios-bridge-ui.cjs', 'tests/verify_ipa.py',
     'docs/iPad安装与云端打包.md', 'docs/iPad验证说明.md',
     '歌曲定制与导入规则.md', 'release/曲库模板/示例歌曲包.qinjie.json'
 ]

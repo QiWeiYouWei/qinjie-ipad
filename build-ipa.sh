@@ -14,7 +14,7 @@ xcodebuild -project ios/Qinjie.xcodeproj -scheme Qinjie -configuration Release \
   CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' build
 app="$task_root/.build/ios-derived/Build/Products/Release-iphoneos/Qinjie.app"
 test -f "$app/Qinjie"
-lipo -verify_arch arm64 "$app/Qinjie"
+lipo "$app/Qinjie" -verify_arch arm64
 plutil -lint "$app/Info.plist"
 test -f "$app/Web/index.html"
 test -f "$app/Bridge.js"
@@ -25,5 +25,6 @@ ditto "$app" "$stage/Payload/Qinjie.app"
 output="$task_root/release/ios/Qinjie-1.4.0-iPad-unsigned.ipa"
 (cd "$stage" && ditto -c -k --keepParent Payload "$output")
 unzip -t "$output"
+python3 tests/verify_ipa.py "$output"
 shasum -a 256 "$output" > "$output.sha256"
 echo "Unsigned IPA created: $output. Sign it before installation."
