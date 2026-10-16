@@ -1,5 +1,10 @@
 (function(root){
   'use strict';
+  const X=typeof module!=='undefined'?require('./exam-core.js'):root.PianoExamCore;
+  const M=typeof module!=='undefined'?require('./learning-core.js'):root.PianoLearningCore;
+  const P=typeof module!=='undefined'?require('./practice-review.js'):root.PianoPracticeReview;
+  const K=typeof module!=='undefined'?require('./coach.js'):root.PianoCoach;
+  const R=typeof module!=='undefined'?require('./rhythm-core.js'):root.PianoRhythmCore;
   if(!Array.prototype.at)Object.defineProperty(Array.prototype,'at',{value:function(i){i=Math.trunc(i)||0;return this[i<0?this.length+i:i]},configurable:true,writable:true});
   if(!Array.prototype.findLastIndex)Object.defineProperty(Array.prototype,'findLastIndex',{value:function(fn){for(let i=this.length-1;i>=0;i--)if(fn(this[i],i,this))return i;return -1},configurable:true,writable:true});
   const names=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
@@ -49,6 +54,16 @@
       }
     }return best;
   }
+  function safeReading(value){
+    const r={level:0,mode:'bridge',notes:[],history:[]},modes=['bridge','staff','numbered','review'];
+    if(!value||typeof value!=='object')return r;
+    if(Number.isInteger(value.level)&&value.level>=0&&value.level<=3)r.level=value.level;
+    if(modes.includes(value.mode))r.mode=value.mode;
+    const count=n=>Math.min(100000,Math.max(0,Math.trunc(Number(n)||0))),seen=new Set();
+    if(Array.isArray(value.notes))for(const item of value.notes.slice(0,200)){if(!item||!Number.isInteger(item.note)||item.note<55||item.note>83||seen.has(item.note))continue;seen.add(item.note);const attempts=count(item.attempts),correct=Math.min(attempts,count(item.correct));r.notes.push({note:item.note,attempts,correct,streak:Math.min(correct,100,count(item.streak))})}
+    if(Array.isArray(value.history))r.history=value.history.filter(h=>h&&/^\d{4}-\d{2}-\d{2}$/.test(h.date)&&modes.includes(h.mode)&&Number.isInteger(h.level)&&h.level>=0&&h.level<=3&&Number.isInteger(h.total)&&h.total>=1&&h.total<=10&&Number.isInteger(h.correct)&&h.correct>=0&&h.correct<=h.total&&Number.isFinite(h.seconds)).slice(-100).map(h=>({date:h.date,mode:h.mode,level:h.level,total:h.total,correct:h.correct,seconds:Math.round(Math.min(600,Math.max(0,h.seconds))),complete:h.complete===true}));
+    return r;
+  }
   function safeState(value){
     if(!value||typeof value!=='object'||Array.isArray(value))throw Error('记录格式不正确');
     const s={version:1,minutes:20,goal:'完整弹奏一首简单旋律',bpm:60,hints:true,notation:'numbered',keyboard:'wide',repeat:false,completed:[],history:[],quiz:[],review:[],replays:[]};
@@ -58,7 +73,14 @@
     if(typeof value.hints==='boolean')s.hints=value.hints;
     if(['numbered','staff','both'].includes(value.notation))s.notation=value.notation;
     if(['wide','full'].includes(value.keyboard))s.keyboard=value.keyboard;
+    s.timbre=['grand','upright'].includes(value.timbre)?value.timbre:'grand';
     if(typeof value.repeat==='boolean')s.repeat=value.repeat;
+    s.practiceReview=P.safeState(value.practiceReview);
+    s.learning=M.safeState(value.learning);
+    s.reading=safeReading(value.reading);
+    s.exams=X.safeState(value.exams);
+    s.coach=K.safeState(value.coach);
+    s.rhythm=R.safeState(value.rhythm);
     if(Array.isArray(value.replays))s.replays=value.replays.slice(-5).map(safeReplay).filter(Boolean);
     if(Array.isArray(value.completed))s.completed=value.completed.filter(x=>Number.isInteger(x)&&x>=0&&x<100).slice(0,100);
     if(Array.isArray(value.quiz))s.quiz=value.quiz.filter(x=>Number.isInteger(x)&&x>=0&&x<100).slice(0,100);
@@ -66,6 +88,6 @@
     if(Array.isArray(value.history))s.history=value.history.filter(h=>h&&typeof h.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(h.date)&&typeof h.title==='string'&&Number.isFinite(h.seconds)&&h.seconds>=0).slice(-500).map(h=>({date:h.date,title:h.title.slice(0,100),seconds:Math.min(h.seconds,7200),mode:h.mode==='rhythm'?'rhythm':'wait',pitch:Math.max(0,Math.min(100,Number(h.pitch)||0)),timing:Number.isFinite(h.timing)?Math.max(0,Math.min(100,h.timing)):null,bpm:Number(h.bpm)||60,notation:['numbered','staff','both'].includes(h.notation)?h.notation:'staff'}));
     return s;
   }
-  const api={name,frequency,numberPitch,numberDuration,events,measures,sliceMeasures,safeReplay,summarize,matchRhythm,safeState};
+  const api={name,frequency,numberPitch,numberDuration,events,measures,sliceMeasures,safeReplay,summarize,matchRhythm,safeState,safeReading};
   if(typeof module!=='undefined')module.exports=api;else root.PianoCore=api;
 })(typeof window==='undefined'?globalThis:window);

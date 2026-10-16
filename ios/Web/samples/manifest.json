@@ -1,0 +1,203 @@
+{
+  "format": "base64-mp3-192k-stereo",
+  "range": [
+    55,
+    83
+  ],
+  "sources": {
+    "Tonejs/audio": "efd8296360f9526e379bfbe5c1698ff54d6a1d34",
+    "sgossner/VSCO-2-CE": "440300901dfe9275fd84e0b7763af1f8443ae62e"
+  },
+  "samples": [
+    {
+      "bank": "grand",
+      "note": 54,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/Fs3.mp3",
+      "sourceSha256": "960fefd90f56608b7edf958dadfeca893cff5744ab9034d61e419401fe45ce9c",
+      "trimmedLeadingSeconds": 0.002902,
+      "seconds": 11.997,
+      "gain": 2.140197,
+      "encodedSha256": "d9e1a80c01df33a33f95260d4f75b92c54bc0c7779f11bd1cee8b4eff51aa988"
+    },
+    {
+      "bank": "grand",
+      "note": 57,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/A3.mp3",
+      "sourceSha256": "8e108fe228e34e32f6b4e61efff732eec53058a9e6f05a8d8e719598b132c4f9",
+      "trimmedLeadingSeconds": 0.003061,
+      "seconds": 11.997,
+      "gain": 2.140197,
+      "encodedSha256": "9ef2ff239e932b7ada1417a49ca0300ccca7cfdfc7cad140d61443030a6366f2"
+    },
+    {
+      "bank": "grand",
+      "note": 60,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/C4.mp3",
+      "sourceSha256": "689eaa4c2fd7f29a2cc0e386eec462156d523a87d701269e5e2458e66056f4f6",
+      "trimmedLeadingSeconds": 0.005147,
+      "seconds": 11.995,
+      "gain": 2.140197,
+      "encodedSha256": "08fe4c5af3daba72415b4d2c884c90de69dcf9987460540db88773863ae4df07"
+    },
+    {
+      "bank": "grand",
+      "note": 63,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/Ds4.mp3",
+      "sourceSha256": "663e8bb3e2d0fa23a30526dcd7ab0e42609c193c07025647ef46badcf81ec211",
+      "trimmedLeadingSeconds": 0.004422,
+      "seconds": 11.996,
+      "gain": 2.140197,
+      "encodedSha256": "c97e9bb19c8aa48061643499186718693cf3239a1ad579b3c20c994ef37c591a"
+    },
+    {
+      "bank": "grand",
+      "note": 66,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/Fs4.mp3",
+      "sourceSha256": "613652f5c96e35736ce6a46bc4ddb6ba1076d1fb16a35a4c22c14e67efdde57c",
+      "trimmedLeadingSeconds": 0.003243,
+      "seconds": 11.997,
+      "gain": 2.140197,
+      "encodedSha256": "68748f804928c799d05fbe7a191c16c4d9c5cae977b638d5ab3f04dd67404a16"
+    },
+    {
+      "bank": "grand",
+      "note": 69,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/A4.mp3",
+      "sourceSha256": "a62df24a2c84cea8d18c1fa8aca7c18c877ba2b76a00a591256fa74d3ce54ac3",
+      "trimmedLeadingSeconds": 0.005669,
+      "seconds": 11.994,
+      "gain": 2.140197,
+      "encodedSha256": "28db91f1171702a0c479725016cff27cd9f0b7f66c2879905b53a71f1c697dc0"
+    },
+    {
+      "bank": "grand",
+      "note": 72,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/C5.mp3",
+      "sourceSha256": "2f5b0f7422063010fb379e684bfdf2daa3911dcd2251413d79fa2a53029fdc30",
+      "trimmedLeadingSeconds": 0.005533,
+      "seconds": 11.994,
+      "gain": 2.140197,
+      "encodedSha256": "0ea3539affbabc9088e1cf1d1ed836bda12d525ee56817b421d2da2486b0bb9b"
+    },
+    {
+      "bank": "grand",
+      "note": 75,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/Ds5.mp3",
+      "sourceSha256": "bf71096e653ab7ceca3914b9fd44d8c27fe83c162564c5db34bd06b94eb14b8c",
+      "trimmedLeadingSeconds": 0.006803,
+      "seconds": 11.993,
+      "gain": 2.140197,
+      "encodedSha256": "94e21809081485dfd60e5198ec63132f1eaa2a2eb4afa4deb4842dbf5da91e0c"
+    },
+    {
+      "bank": "grand",
+      "note": 78,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/Fs5.mp3",
+      "sourceSha256": "ed2fdf543274ea72ddd4eb634a16356531a5f4040b2a60d34fb12a5c72cbf22f",
+      "trimmedLeadingSeconds": 0.008844,
+      "seconds": 11.903,
+      "gain": 2.140197,
+      "encodedSha256": "92fda0fd8535adb07cca8892c678bde780dd825f142c5320e89852803ad8d255"
+    },
+    {
+      "bank": "grand",
+      "note": 81,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/A5.mp3",
+      "sourceSha256": "9e5cee1fe9cf68b7193623d46a27c8956e572c1ff234ca0e11599b556050dec6",
+      "trimmedLeadingSeconds": 0.002063,
+      "seconds": 10.535,
+      "gain": 2.140197,
+      "encodedSha256": "9f6c56815050c28696f4eed017d4733ad95a2b3c95a9df03b824b33568514f2b"
+    },
+    {
+      "bank": "grand",
+      "note": 84,
+      "url": "https://raw.githubusercontent.com/Tonejs/audio/efd8296360f9526e379bfbe5c1698ff54d6a1d34/salamander/C6.mp3",
+      "sourceSha256": "0d3232edd13ba69fd5caf4a295060ae0fd533b8a1433ae0a038644d70715c907",
+      "trimmedLeadingSeconds": 0.004807,
+      "seconds": 6.221,
+      "gain": 2.140197,
+      "encodedSha256": "185719fad99d9eb96f298b857ea4b1ac10a3cd2b9dd4afbf12a5730c2a66d94b"
+    },
+    {
+      "bank": "upright",
+      "note": 57,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_018.wav",
+      "sourceSha256": "fb39ae501f7dde4aa3626d2e382b3709962cbe5d48b6c001ba7c911d1ffb6aeb",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 12.0,
+      "gain": 8.100911,
+      "encodedSha256": "6b953e95d6b87d9740ded5123d9a9f1c78c4831bafa3a31fcacf9a1ee4339f89"
+    },
+    {
+      "bank": "upright",
+      "note": 61,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_020.wav",
+      "sourceSha256": "dc314226819e7af0768cd7fc08933f5e5b550083145e05af630fd7556f4d3913",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 12.0,
+      "gain": 8.100911,
+      "encodedSha256": "edba0ea7677aeaac268915c1d206ebe1fc6cf881ddd33d62ac0da59109532012"
+    },
+    {
+      "bank": "upright",
+      "note": 65,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_022.wav",
+      "sourceSha256": "9a4e03fa389b7e59ea6b3a6719eef52be8d607844283c7163662030f57b60942",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 12.0,
+      "gain": 8.100911,
+      "encodedSha256": "4375830f4d07912a2baa5e52e4156143666012c2040a6b1f787a056dde4a8926"
+    },
+    {
+      "bank": "upright",
+      "note": 69,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_024.wav",
+      "sourceSha256": "a00ae1a2b2a78c154b067a9709afc1ce2d3be9f08d9f4ad3c9c869a7db80eb75",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 12.0,
+      "gain": 8.100911,
+      "encodedSha256": "a8aa970ea7a409dce29f340dc5972cb9edf62e46ba9c2da50a1bcad1bf555b89"
+    },
+    {
+      "bank": "upright",
+      "note": 73,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_026.wav",
+      "sourceSha256": "4e668e75c3922c79ef06bd46806224dbf8dbfa0be1569847a1cd17e573a967ec",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 10.038,
+      "gain": 8.100911,
+      "encodedSha256": "83feec651c8b647fd5864bac141e15e884a294e7044dbe6b381e2df9d9f0e6c2"
+    },
+    {
+      "bank": "upright",
+      "note": 77,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_028.wav",
+      "sourceSha256": "84fe87bd24dc93d354213f730517a29f485c40715d5959af97976b364110b70a",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 11.369,
+      "gain": 8.100911,
+      "encodedSha256": "2124cd8a034c18b7dda9ac3159c474162dc41350221c11cc5d4bcf17a1451a06"
+    },
+    {
+      "bank": "upright",
+      "note": 81,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_030.wav",
+      "sourceSha256": "4b558995c108f7f1dcede12c7e0444caa2658205fea34a314abf485dc6b7e710",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 11.881,
+      "gain": 8.100911,
+      "encodedSha256": "eb0d957a005cec1b5471c170e3eec3c547597c99c0746c0f663d69ce83140f82"
+    },
+    {
+      "bank": "upright",
+      "note": 85,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn2_rr1_032.wav",
+      "sourceSha256": "8a4b127b8420c276d8935495d13b4e493c3eaa8f8aaef75bbc4f74d6437160f2",
+      "trimmedLeadingSeconds": 0.0,
+      "seconds": 10.914,
+      "gain": 8.100911,
+      "encodedSha256": "6aa61881ee7beac215161790d9b5cb97514fb8b6f78af4a3fbb0b061a94c92e2"
+    }
+  ]
+}

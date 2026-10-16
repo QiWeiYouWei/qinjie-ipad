@@ -1,66 +1,97 @@
-# 琴阶 iPad 版：Windows 打包与安装
+# 琴阶 Qinjie
 
-版本：1.4.0（构建5）；目标：iPadOS 16及以上的iPad。无需实体钢琴。
+在安卓平板上直接用触屏学习钢琴，无需电钢琴。提供简谱、五线谱和上下对照，课程、曲目与两套钢琴实录采样均可离线使用。
 
-## 当前交付状态
+当前版本 **1.12.1**（Android 构建 15）。本仓库保留原名 `qinjie-ipad`，现包含 Android、iPad 和共享前端源码。
 
-已完成离线iPad原生外壳、Xcode工程、共享课程与曲库、文件导入/分享、云端构建脚本，以及不含安卓签名密钥和个人练习记录的源码压缩包。
+## 下载与安装
 
-2026年10月13日已在GitHub云端Mac上使用Xcode 16.4编译成功，生成并下载`release/ios/Qinjie-1.4.0-iPad-unsigned.ipa`。本地检查通过：ARM64原生程序、iPad/系统/版本信息、全部离线资源、编译后的启动页与图标、下载哈希。**IPA尚未签名，尚未做iPad真机测试；不能直接点开安装。**
+到 [Releases](https://github.com/QiWeiYouWei/qinjie-ipad/releases) 下载 `Qinjie-1.12.1-Android.apk`。**只需安装这一个 APK**，课程、内置曲库和两套音源已经包含在内。
 
-私有仓库：[QiWeiYouWei/qinjie-ipad](https://github.com/QiWeiYouWei/qinjie-ipad)。成功构建：[运行38277648988](https://github.com/QiWeiYouWei/qinjie-ipad/actions/runs/38277648988)。源码提交：`6422eaa0244f81a959825a1fcb87d096bb221b44`。IPA SHA256：`14da779bcab2956d49860f6e37596592dbb7a4b0a7354274dfc912eeaf6a899f`。
+- Android 8.0 及以上；使用系统 Android WebView。适合横屏平板，也支持手机。
+- 从系统文件管理器打开 APK 安装。已有琴阶正式包可覆盖更新；更新前可在设置中导出记录备份。
+- 自行编译的 APK 使用自己的签名，无法覆盖不同签名的已安装版本。
+- 应用不申请网络、麦克风或蓝牙权限；练习数据保存在设备本机，支持手动导出和导入。
 
-**现在可直接从下列流程第4步开始安装本地IPA。** 前三步用于以后更新或重新构建；现有仓库已经建立并上传源码，无需重复新建。
+## 学习功能
 
-## Windows 用户的路线
+- **28 节课程、6 个阶段**：识谱、指法、节奏、音阶、和弦和双音；配讲解、例谱、步骤、易错点与解析题。
+- **三种谱式**：简谱、五线谱、上下对照，可在练习中切换，帮助从简谱过渡到五线谱。
+- **39 项内置练习**：11 首完整旋律、2 个双音挑战版与 26 项专项练习；按难度、曲名和技能查找。
+- **触屏钢琴**：多指和弦、示范、分小节练习、循环、逐步跟练和最近演奏回放。
+- **钢琴音色**：离线三角钢琴和立式钢琴实录采样，提供加载进度、试听、声音检查和诊断。
+- **节奏工坊**：35—160 BPM 节拍器、2/4、3/4、4/4 拍、细分与重音，以及 9 种四小节拍击训练。
+- **每日计划和成长**：自定目标与速度、学习日历、进度、收藏、笔记、知识复习及记录备份。
+- **12 个乐理专题、15 张声音知识卡**；课程与专题共 80 道复习题。
+- **阶段考核与训练处方**：技术、短曲、视奏、听辨、乐理五部分；评价音高、起音、时值、连贯、双音和休止，定位错点并推荐练习。
+- **自定义曲库导入**：支持 `.qinjie.json` 单首或批量导入、预览确认、稳定 ID 更新与导出。
 
-1. 在GitHub创建空的私有仓库，把`Qinjie-iPad-Source-1.4.0.zip`解压后的内容上传到仓库根目录。使用Git或GitHub Desktop提交整个目录，确保隐藏的`.github/workflows/build-ipad.yml`也上传；不要只上传压缩包。上传源码会将这些文件交给GitHub保存，先确认你愿意使用该服务。
-2. 在仓库的**Actions → Build iPad IPA → Run workflow**手动运行。构建使用GitHub托管的`macos-15`，不需要你拥有Mac，也不需要在构建里填写苹果账号、证书或密码。若GitHub要求启用Actions，先启用。账号额度或付费要求以该账号显示为准。
-3. 等待构建成功，下载该次运行下的`Qinjie-iPad-unsigned`产物，解压得到`Qinjie-1.4.0-iPad-unsigned.ipa`。产物保留7天。失败时下载/查看日志，请把失败步骤和错误信息给我修复，失败的任务不会产生可用安装包。
-4. 按AltStore Classic的[官方Windows安装指南](https://faq.altstore.io/altstore-classic/how-to-install-altstore-windows)安装AltServer及其要求的Apple组件，用USB连接并信任舍友的iPad，安装AltStore。账号由你们直接填入本机工具，不需要发给我。首次使用可能需要在iPad设置里信任开发者并开启开发者模式，按指南操作。
-5. 把IPA保存到iPad“文件”中，在AltStore的My Apps页面通过“＋”选择该IPA，完成签名安装。安装后打开“琴阶”，横屏弹奏、竖屏阅读。安装异常时记录AltStore的实际报错。
-6. 使用免费Apple账号时，AltStore安装的应用需要在7天有效期内续签。使用AltStore的Refresh All刷新；AltServer连接条件请遵循官方说明。续签和覆盖更新前先在琴阶设置页导出备份，避免卸载造成记录丢失。
+考核 A—D 是应用内学习阶段。触屏无法评价真实力度、指法和踏板，也不提供正式钢琴考级认证。评分维度、限制与验证范围见 [考核评分说明](docs/考核评分说明.md)。
 
-参考：[GitHub托管运行器](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)、[构建产物](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts)、[AltStore续签说明](https://faq.altstore.io/altstore-classic/your-altstore)。
+## 1.12.1 音源修复
 
-## 舍友的iPad怎样使用
+修复 Windows 构建时 APK 音源路径中的反斜杠导致 Android 找不到离线音源的问题。构建时在签名前统一 ZIP 路径，检查最终包两套音源的精确路径与哈希；补充原生分块读取和诊断。
 
-- 课程、39项内置练习、11首完整旋律及两个双音版、乐理讲解、每日计划和成长记录均在包内，使用时不依赖网页服务器。
-- 简谱、五线谱、对照三种显示方式沿用安卓版。多点触控弹奏、示范、选段循环和练习回放复用同一套代码。
-- 曲目页“导入歌曲”打开系统文件选择器，选`.qinjie.json`，在应用预览后确认；格式和限制与《歌曲定制与导入规则.md》相同。
-- “导出我的曲库”和设置页“导出记录”打开系统分享面板，可选“存储到文件”、AirDrop等系统提供的方式。记录备份包含自定义曲库，可在安卓与iPad版间迁移；导入备份需在应用中确认替换。
-- 切出应用时停止弹奏与示范，返回后通过触屏重新开始声音。不申请麦克风或蓝牙权限。琴音是本地合成，实际延迟与音量需要真机确认。
+86 项 Node 测试通过，并完成最终 APK 资源与 Java 精确读取检查。这些检查不能替代 Android 真机播放；本版本在用户的 Samsung Tab S10+ 上恢复声音的结果仍待确认。详见 [修复说明](docs/安卓音源路径修复说明.md)。
 
-## 后续签名与发布选项
+## 曲库定制
 
-免费账号的个人安装适合先试用，需要持续续签。如果希望通过TestFlight邀请舍友试用，或发布App Store，需要Apple Developer Program账号和对应签名、上传及审核流程。当前流程只构建未签名应用，没有代购签名或企业证书。
-
-参考：[Apple账号能力](https://developer.apple.com/help/account/basics/about-your-developer-account/)、[Apple测试与发布流程](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases)。
-
-## 工程维护与Mac本地构建
-
-共享前端在`web/`，iPad副本在`ios/Web/`。修改课程或声音后执行`node scripts/sync-ios-web.cjs`，再构建；不要只改副本。`ios/Bridge.js`把原有四个文件操作交给iPad外壳。原生代码在`ios/Sources/`，采用WKWebView、UIDocumentPicker与UIActivityViewController，打开范围限制在本地Web资源目录。
-
-有Mac时运行：
+请先阅读 [歌曲定制与导入规则](歌曲定制与导入规则.md)。原创示例与专项曲包位于 [release/曲库模板](release/曲库模板)。导入前校验：
 
 ```bash
-bash build-ipa.sh
-```
-
-也可以用Xcode打开`ios/Qinjie.xcodeproj`，选Qinjie scheme与连接的iPad，在Signing & Capabilities选择自己的Team。身份签名和设备注册由Xcode管理。云端脚本关闭签名，以便在Windows路线中自行签名安装。
-
-代码检查：
-
-```bash
-node scripts/sync-ios-web.cjs
-node --test tests/core.test.cjs tests/content.test.cjs tests/library.test.cjs tests/ios-package.test.cjs
 node scripts/validate-song-pack.cjs release/曲库模板/示例歌曲包.qinjie.json
 ```
 
-浏览器检查`tests/ios-bridge-ui.cjs`需另装Playwright与Chrome，设置`CHROME_PATH`时可使用自己的Chrome路径。它模拟iPad尺寸和原生消息，不能验证Swift编译、系统选择器、签名或WKWebView兼容性。
+当前导入格式为结构化乐谱 JSON，不直接导入 MP3、图片、MIDI 或 MusicXML。私人定制歌曲与个人练习记录不包含在公开仓库中。
 
-## 真机验收清单
+## 开发与构建
 
-云端编译与签名安装成功后，至少检查：冷启动离线打开；横竖屏与分屏；同按两个音、多次松手无短促啪声；切到后台停止声音；歌曲导入取消/确认/错误提示；导出到文件后重新导入；导入记录的取消与确认；关闭重开保留记录；备份后覆盖更新并核对数据。
+目录：`web/` 为共享前端，`android/` 为 Android 原生外壳，`ios/` 为 iPad 工程，`tests/` 为测试，`docs/` 为功能说明。
 
-请告知舍友的iPad型号、iPadOS版本和实际安装错误。源代码检查通过不代表以上真机项目已通过。
+### 浏览器预览
+
+安装 Node.js 后运行：
+
+```bash
+node server.cjs
+```
+
+在本机浏览器打开 `http://127.0.0.1:5173`。浏览器预览不等同于 Android / WKWebView 真机验证。
+
+### Android
+
+需要 Windows PowerShell、JDK 和官方 Android SDK。将平台文件放在 `.build/sdk/platforms/android-35/`，构建工具放在 `.build/sdk/build-tools/` 的版本子目录；将 JDK 的 `bin` 加入 PATH。
+
+在本机环境中设置 `QINJIE_STORE_PASSWORD`、`QINJIE_KEY_PASSWORD`；可选 `QINJIE_KEYSTORE` 与 `QINJIE_KEY_ALIAS`。默认密钥位置为 `.build/qinjie-local.keystore`。不存在时创建自己的本地签名密钥。请保存自己的签名文件，勿提交密码或密钥。
+
+```powershell
+.\build-apk.ps1
+```
+
+### iPad
+
+支持 iPadOS 16 及以上。修改共享前端后先同步：
+
+```bash
+node scripts/sync-ios-web.cjs
+bash build-ipa.sh
+```
+
+IPA 需要 macOS / Xcode 编译，安装还需要 Apple 签名。本仓库提供手动触发的 GitHub Actions 工作流；普通推送不会触发云端构建。1.12.1 iPad 工程已同步，尚未重新进行 Xcode 编译或 iPad 真机测试。见 [iPad 说明](docs/iPad安装与云端打包.md)。
+
+### 测试
+
+```bash
+node --test tests/*.test.cjs
+python tests/verify_apk.py
+node tests/native-audio-store.cjs
+```
+
+后两项需要已构建的 1.12.1 APK；原生读取测试还需要 JDK。浏览器交互测试另需 Playwright 和 Chrome，部分脚本保留开发机路径，换机器运行时需按环境调整。
+
+## 音源署名
+
+- 三角钢琴：Alexander Holm 的 **Salamander Grand Piano / Yamaha C5**，采用 **CC BY 3.0**。琴阶选取根音、裁剪、淡出并转码；原说明与处理清单位于 `web/samples/`。
+- 立式钢琴：Simon Dalzell / Ivy Audio 录制、Versilian Studios 发布的 **VSCO 2 CE**，采用 **CC0 1.0**。
+
+许可原文随源码与安装包保留。完整来源、固定提交、处理方式和音质限制见 [钢琴音源说明](docs/钢琴音源说明.md)。

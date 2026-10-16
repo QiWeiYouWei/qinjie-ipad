@@ -1,22 +1,24 @@
 # 琴阶 iPad 版：Windows 打包与安装
 
-版本：1.4.0（构建5）；目标：iPadOS 16及以上的iPad。无需实体钢琴。
+当前开发工程：1.12.1（构建15）；目标：iPadOS 16及以上的iPad。无需实体钢琴。
 
-## 当前交付状态
+1.12本地工程新增独立节拍器和9种四小节拍击训练、逐拍复盘、同条件比较与备份，保留采样进度、声音检查、重试和触屏释放优化，保留普通练习逐小节复盘、错点复习、慢练／衔接、同条件比较和旧谱定位保护，保留12个学习专题、知识复习、笔记、识谱、考核、训练处方与实录钢琴。已同步28个离线资源。1.12.1尚未执行云端Xcode编译或签名安装。共享前端已加入读取通道诊断；Android APK路径修复不涉及iPad资产目录。`Qinjie-iPad-Source-1.12.1.zip`是新版源码工程；下方已有IPA和构建记录仅对应1.4。
+
+## 已有1.4构建记录与安装参考
 
 已完成离线iPad原生外壳、Xcode工程、共享课程与曲库、文件导入/分享、云端构建脚本，以及不含安卓签名密钥和个人练习记录的源码压缩包。
 
 2026年10月13日已在GitHub云端Mac上使用Xcode 16.4编译成功，生成并下载`release/ios/Qinjie-1.4.0-iPad-unsigned.ipa`。本地检查通过：ARM64原生程序、iPad/系统/版本信息、全部离线资源、编译后的启动页与图标、下载哈希。**IPA尚未签名，尚未做iPad真机测试；不能直接点开安装。**
 
-私有仓库：[QiWeiYouWei/qinjie-ipad](https://github.com/QiWeiYouWei/qinjie-ipad)。成功构建：[运行38277648988](https://github.com/QiWeiYouWei/qinjie-ipad/actions/runs/38277648988)。源码提交：`6422eaa0244f81a959825a1fcb87d096bb221b44`。IPA SHA256：`14da779bcab2956d49860f6e37596592dbb7a4b0a7354274dfc912eeaf6a899f`。
+源码仓库：[QiWeiYouWei/qinjie-ipad](https://github.com/QiWeiYouWei/qinjie-ipad)。成功构建：[运行38277648988](https://github.com/QiWeiYouWei/qinjie-ipad/actions/runs/38277648988)。源码提交：`6422eaa0244f81a959825a1fcb87d096bb221b44`。IPA SHA256：`14da779bcab2956d49860f6e37596592dbb7a4b0a7354274dfc912eeaf6a899f`。
 
-**现在可直接从下列流程第4步开始安装本地IPA。** 前三步用于以后更新或重新构建；现有仓库已经建立并上传源码，无需重复新建。
+**以上 IPA 记录仅对应历史 1.4 版本；1.12.1 需重新构建，并自行签名后才能安装。**
 
 ## Windows 用户的路线
 
-1. 在GitHub创建空的私有仓库，把`Qinjie-iPad-Source-1.4.0.zip`解压后的内容上传到仓库根目录。使用Git或GitHub Desktop提交整个目录，确保隐藏的`.github/workflows/build-ipad.yml`也上传；不要只上传压缩包。上传源码会将这些文件交给GitHub保存，先确认你愿意使用该服务。
+1. 在GitHub创建空的私有仓库，把`Qinjie-iPad-Source-1.12.1.zip`解压后的内容上传到仓库根目录。使用Git或GitHub Desktop提交整个目录，确保隐藏的`.github/workflows/build-ipad.yml`也上传；不要只上传压缩包。上传源码会将这些文件交给GitHub保存，先确认你愿意使用该服务。
 2. 在仓库的**Actions → Build iPad IPA → Run workflow**手动运行。构建使用GitHub托管的`macos-15`，不需要你拥有Mac，也不需要在构建里填写苹果账号、证书或密码。若GitHub要求启用Actions，先启用。账号额度或付费要求以该账号显示为准。
-3. 等待构建成功，下载该次运行下的`Qinjie-iPad-unsigned`产物，解压得到`Qinjie-1.4.0-iPad-unsigned.ipa`。产物保留7天。失败时下载/查看日志，请把失败步骤和错误信息给我修复，失败的任务不会产生可用安装包。
+3. 等待构建成功，下载该次运行下的`Qinjie-iPad-unsigned`产物，解压得到当前版本的未签名IPA（1.12构建将命名为`Qinjie-1.12.1-iPad-unsigned.ipa`）。产物保留7天。失败时下载/查看日志，请把失败步骤和错误信息给我修复，失败的任务不会产生可用安装包。
 4. 按AltStore Classic的[官方Windows安装指南](https://faq.altstore.io/altstore-classic/how-to-install-altstore-windows)安装AltServer及其要求的Apple组件，用USB连接并信任舍友的iPad，安装AltStore。账号由你们直接填入本机工具，不需要发给我。首次使用可能需要在iPad设置里信任开发者并开启开发者模式，按指南操作。
 5. 把IPA保存到iPad“文件”中，在AltStore的My Apps页面通过“＋”选择该IPA，完成签名安装。安装后打开“琴阶”，横屏弹奏、竖屏阅读。安装异常时记录AltStore的实际报错。
 6. 使用免费Apple账号时，AltStore安装的应用需要在7天有效期内续签。使用AltStore的Refresh All刷新；AltServer连接条件请遵循官方说明。续签和覆盖更新前先在琴阶设置页导出备份，避免卸载造成记录丢失。
@@ -29,7 +31,7 @@
 - 简谱、五线谱、对照三种显示方式沿用安卓版。多点触控弹奏、示范、选段循环和练习回放复用同一套代码。
 - 曲目页“导入歌曲”打开系统文件选择器，选`.qinjie.json`，在应用预览后确认；格式和限制与《歌曲定制与导入规则.md》相同。
 - “导出我的曲库”和设置页“导出记录”打开系统分享面板，可选“存储到文件”、AirDrop等系统提供的方式。记录备份包含自定义曲库，可在安卓与iPad版间迁移；导入备份需在应用中确认替换。
-- 切出应用时停止弹奏与示范，返回后通过触屏重新开始声音。不申请麦克风或蓝牙权限。琴音是本地合成，实际延迟与音量需要真机确认。
+- 切出应用时停止弹奏与示范，返回后通过触屏重新开始声音。不申请麦克风或蓝牙权限。琴音来自内置两套实录采样，实际延迟与音量需要真机确认。
 
 ## 后续签名与发布选项
 

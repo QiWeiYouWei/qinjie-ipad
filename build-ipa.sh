@@ -22,7 +22,7 @@ mkdir -p .build release/ios
 stage="$(mktemp -d "$task_root/.build/ipa-stage.XXXXXX")"
 mkdir -p "$stage/Payload"
 ditto "$app" "$stage/Payload/Qinjie.app"
-output="$task_root/release/ios/Qinjie-1.4.0-iPad-unsigned.ipa"
+output="$task_root/release/ios/Qinjie-1.12.1-iPad-unsigned.ipa"
 (cd "$stage" && ditto -c -k --keepParent Payload "$output")
 unzip -t "$output"
 python3 tests/verify_ipa.py "$output"

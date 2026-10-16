@@ -7,24 +7,25 @@ import sys
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
-ipa = Path(sys.argv[1]) if len(sys.argv) > 1 else root/'release/ios/Qinjie-1.4.0-iPad-unsigned.ipa'
+ipa = Path(sys.argv[1]) if len(sys.argv) > 1 else root/'release/ios/Qinjie-1.10.0-iPad-unsigned.ipa'
 with zipfile.ZipFile(ipa) as package:
     assert package.testzip() is None, 'IPA archive CRC failure'
     prefix = 'Payload/Qinjie.app/'
     names = package.namelist()
     info = plistlib.loads(package.read(prefix+'Info.plist'))
     assert info['CFBundleIdentifier'] == 'cn.qinjie.piano'
-    assert info['CFBundleShortVersionString'] == '1.4.0'
-    assert str(info['CFBundleVersion']) == '5'
+    assert info['CFBundleShortVersionString'] == '1.10.0'
+    assert str(info['CFBundleVersion']) == '11'
     assert info['UIDeviceFamily'] == [2], 'Not an iPad target'
     assert info['MinimumOSVersion'] == '16.0'
     binary = package.read(prefix+info['CFBundleExecutable'])
     assert len(binary) > 4096, 'Missing native executable'
     magic, cpu = struct.unpack('<II', binary[:8])
     assert magic == 0xFEEDFACF and cpu == 0x0100000C, 'Expected a native ARM64 Mach-O executable'
-    for file in (root/'ios/Web').iterdir():
+    for file in (root/'ios/Web').rglob('*'):
         if file.is_file():
-            assert package.read(prefix+'Web/'+file.name) == file.read_bytes(), 'Outdated web asset: '+file.name
+            name=file.relative_to(root/'ios/Web').as_posix()
+            assert package.read(prefix+'Web/'+name) == file.read_bytes(), 'Outdated web asset: '+name
     assert package.read(prefix+'Bridge.js') == (root/'ios/Bridge.js').read_bytes()
     assert prefix+'Assets.car' in names, 'Compiled icons missing'
     assert any(name.startswith(prefix+'LaunchScreen.storyboardc/') for name in names), 'Compiled launch screen missing'

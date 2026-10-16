@@ -19,7 +19,7 @@ const root=path.resolve(__dirname,'..'),pack=JSON.parse(fs.readFileSync(path.joi
     assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('qinjie-song-library')).songs.length),2);
     await page.locator('#export-songs').click();
     const exported=await page.evaluate(()=>nativeCalls.at(-1));assert.equal(exported.action,'exportSongs');assert.equal(JSON.parse(exported.data).songs.length,2);
-    await page.locator('[data-practice="39"]').click();await page.locator('#start-btn').click();
+    await page.locator('[data-practice="39"]').click();await page.locator('#start-btn').click();await page.waitForFunction(()=>document.querySelector('#finish-btn')&&!document.querySelector('#finish-btn').disabled);
     for(const [notes] of pack.songs[0].sequence)await page.locator(`.key[data-note="${notes[0]}"]`).tap();
     await page.locator('#result .result').waitFor();assert.match(await page.locator('#result').innerText(),/目标音命中 100%/);
     await page.evaluate(()=>window.pausePiano());

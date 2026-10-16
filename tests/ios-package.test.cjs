@@ -2,7 +2,8 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const {assets,transform,csp}=require('../scripts/sync-ios-web.cjs');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('iPad bundles the exact current shared curriculum, music, notation and audio',()=>{
-  assert.deepEqual(fs.readdirSync(path.join(root,'ios/Web')).sort(),[...assets].sort());
+  const bundled=fs.readdirSync(path.join(root,'ios/Web'),{recursive:true}).filter(n=>fs.statSync(path.join(root,'ios/Web',n)).isFile()).map(n=>n.replaceAll('\\','/')).sort();
+  assert.deepEqual(bundled,[...assets].sort());
   for(const file of assets)assert.equal(read('ios/Web/'+file),transform(file,read('web/'+file)));
   assert.ok(read('ios/Web/index.html').includes(csp));
   assert.ok(!read('ios/Web/app.js').includes('Android 8.0及以上'));
