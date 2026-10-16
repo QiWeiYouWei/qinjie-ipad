@@ -1,3 +1,5 @@
 * text=auto eol=lf
+web/** -text
+ios/Web/** -text
 *.png binary
 *.apk binary
